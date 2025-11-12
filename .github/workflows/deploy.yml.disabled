@@ -1,0 +1,69 @@
+# This file is disabled by default
+# To enable automatic deployment, rename this file to deploy.yml.disabled
+# and follow the setup instructions below
+
+name: Placeholder (disabled)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "No-op workflow. Terminal deploy in use."
+
+# SETUP INSTRUCTIONS:
+# ====================
+# 1. Rename this file from deploy.yml to deploy.yml.disabled
+# 2. Create a new deploy.yml with the configuration below
+# 3. Replace 'your-project-id' with your Firebase project ID
+# 4. Add secrets to GitHub repository (Settings > Secrets and variables > Actions):
+#    - VITE_FIREBASE_API_KEY
+#    - VITE_FIREBASE_AUTH_DOMAIN
+#    - VITE_FIREBASE_PROJECT_ID
+#    - VITE_FIREBASE_STORAGE_BUCKET
+#    - VITE_FIREBASE_MESSAGING_SENDER_ID
+#    - VITE_FIREBASE_APP_ID
+#    - VITE_FIREBASE_MEASUREMENT_ID
+#    - FIREBASE_SERVICE_ACCOUNT (generate from Firebase Console)
+#
+# EXAMPLE WORKFLOW (uncomment and customize):
+# ============================================
+#
+# name: Deploy to Firebase Hosting
+# 
+# on:
+#   push:
+#     branches:
+#       - main
+# 
+# jobs:
+#   build_and_deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '18'
+#           cache: 'npm'
+#       - name: Install dependencies
+#         run: npm ci
+#       - name: Build
+#         env:
+#           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+#           VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+#           VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+#           VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+#           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+#           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+#           VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
+#         run: npm run build
+#       - name: Deploy to Firebase
+#         uses: FirebaseExtended/action-hosting-deploy@v0
+#         with:
+#           repoToken: '${{ secrets.GITHUB_TOKEN }}'
+#           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+#           channelId: live
+#           projectId: your-project-id

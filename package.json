@@ -1,0 +1,32 @@
+{
+  "name": "hospital-bed-log",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Hospital Bed Management System - Track and manage hospital bed inventory efficiently",
+  "type": "module",
+  "author": "Shekib Kohistani <shekib.kohistani@uoflhealth.org>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/hospital-bed-log.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && firebase deploy"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "@google/genai": "latest",
+    "react-dom": "^19.2.0",
+    "firebase": "^11.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "firebase-tools": "^13.27.0"
+  }
+}

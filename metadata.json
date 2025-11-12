@@ -1,0 +1,5 @@
+{
+  "name": " Hospital Bed Log",
+  "description": "A web application to manage and track hospital bed status, types, and assignments, with role-based access for editing information. Color-coded statuses provide quick visual cues for bed availability and condition.",
+  "requestFramePermissions": []
+}
