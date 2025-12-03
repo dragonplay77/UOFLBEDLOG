@@ -1,12 +1,12 @@
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from './firebase';
-import { BedFormData, BedType, BedArea, BedStatus, AppUser } from './types';
+import { BedFormData, BedType, BedStatus, AppUser } from './types';
 
 const SAMPLE_BEDS: BedFormData[] = [
   {
     patientLastName: 'Smith',
     bedType: BedType.LOW_AIR_LOSS,
-    bedArea: BedArea.ICU,
+    department: "ICU",
     status: BedStatus.ASSIGNED_PATIENT,
     location: 'ICU-3A',
     isRental: false,
@@ -16,7 +16,7 @@ const SAMPLE_BEDS: BedFormData[] = [
   {
     patientLastName: 'Johnson',
     bedType: BedType.BARI_LAL,
-    bedArea: BedArea.JEWISH,
+    department: "Jewish",
     status: BedStatus.STORED_AVAILABLE,
     location: 'Storage Room B',
     isRental: true,
@@ -26,7 +26,7 @@ const SAMPLE_BEDS: BedFormData[] = [
   {
     patientLastName: 'Garcia',
     bedType: BedType.RECLINER_CHAIR,
-    bedArea: BedArea.FRAZIER,
+    department: "Frazier",
     status: BedStatus.OUT_OF_SERVICE,
     location: 'Workshop',
     isRental: false,
