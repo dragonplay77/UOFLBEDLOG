@@ -334,7 +334,7 @@ const App: React.FC<AppProps> = ({ currentUser, onLogout }) => {
       <footer className="text-center mt-12 pb-6 px-4">
         <p className="text-sm text-gray-600">Created by Shekib Kohistani.</p>
         <p className="text-sm text-gray-600">
-          For support, contact: <a href="mailto:shekib.kohistani@uoflhealth.org" className="text-indigo-600 hover:text-indigo-800 hover:underline">shekib.kohistani@uoflhealth.org</a>
+          For support, contact: <a href="mailto:skbedlog@gmail.com" className="text-indigo-600 hover:text-indigo-800 hover:underline">skbedlog@gmail.com</a>
         </p>
         <p className="text-xs text-gray-500 mt-2">&copy; {new Date().getFullYear()} Hospital Bed Management System. All rights reserved.</p>
       </footer>

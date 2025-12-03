@@ -1,7 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
+import './index.css';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { NetworkStatus } from './components/NetworkStatus';
 import { LoginPage } from './LoginPage';
 import { AppUser, UserRole } from './types';
 import { onAuthStateChanged, User, signOut } from 'firebase/auth';
@@ -71,7 +74,14 @@ const RootApp: React.FC = () => {
     return <LoginPage />;
   }
 
-  return <App currentUser={currentUser} onLogout={handleLogout} />;
+  return (
+    <ErrorBoundary>
+      <div className="absolute top-2 right-3 z-50">
+        <NetworkStatus />
+      </div>
+      <App currentUser={currentUser} onLogout={handleLogout} />
+    </ErrorBoundary>
+  );
 };
 
 

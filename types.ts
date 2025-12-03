@@ -1,5 +1,6 @@
 
 export enum BedType {
+  REGULAR = "Regular",
   LOW_AIR_LOSS = "Low Air Loss",
   BARI_LAL = "Bari LAL",
   POSEY_BED = "Posey Bed",
@@ -7,12 +8,6 @@ export enum BedType {
   OTHER = "Other (Specify)"
 }
 
-export enum BedArea {
-  JEWISH = "Jewish Beds",
-  FRAZIER = "Frazier Beds",
-  ICU = "ICU Beds",
-  VENDOR = "Vendor Beds"
-}
 
 export enum BedStatus {
   ASSIGNED_PATIENT = "Assigned to Patient",
@@ -30,14 +25,13 @@ export interface Bed {
   patientLastName?: string;
   bedType: BedType;
   otherBedTypeName?: string;
-  bedArea: BedArea;
+  department?: string; // Unit/Department where the bed is assigned
   status: BedStatus;
   location: string; 
   isRental: boolean;
   hillromConfirmation?: string;
   assetNumber?: string;
   serialNumber?: string;
-  purchaseOrder?: string;
   notes?: string; // Added notes field
   lastEditedBy: string;
   lastEditedDate: string; // ISO string format

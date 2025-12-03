@@ -40,4 +40,4 @@ Thank you for considering contributing to this project!
 
 ## Contact
 
-For questions, contact: shekib.kohistani@uoflhealth.org
+For questions, contact: skbedlog@gmail.com

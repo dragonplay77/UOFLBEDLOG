@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { Bed, BedType, BedArea, BedStatus, UserRole, BedFormData, AppUser } from '../types';
-import { BED_TYPE_OPTIONS, BED_AREA_OPTIONS, BED_STATUS_OPTIONS } from '../constants';
+import { Bed, BedType, BedStatus, UserRole, BedFormData, AppUser } from '../types';
+import { BED_TYPE_OPTIONS, BED_STATUS_OPTIONS } from '../constants';
 import { TextInput } from './TextInput';
 import { SelectInput } from './SelectInput';
 
@@ -16,9 +16,10 @@ interface BedFormProps {
 export const BedForm: React.FC<BedFormProps> = ({ onSubmit, onCancel, initialData, currentUser, isSubmitting }) => {
   const [formData, setFormData] = useState<Omit<BedFormData, 'lastEditedBy'>>({
     patientLastName: initialData?.patientLastName || '',
-    bedType: initialData?.bedType || BedType.LOW_AIR_LOSS,
+    bedType: initialData?.bedType || BedType.REGULAR,
     otherBedTypeName: initialData?.otherBedTypeName || '',
-    bedArea: initialData?.bedArea || BedArea.ICU,
+    
+    department: initialData?.department || '',
     status: initialData?.status || BedStatus.STORED_AVAILABLE,
     location: initialData?.location || '',
     isRental: initialData?.isRental || false,
@@ -37,7 +38,8 @@ export const BedForm: React.FC<BedFormProps> = ({ onSubmit, onCancel, initialDat
         patientLastName: initialData.patientLastName || '',
         bedType: initialData.bedType,
         otherBedTypeName: initialData.otherBedTypeName || '',
-        bedArea: initialData.bedArea,
+        
+        department: initialData.department || '',
         status: initialData.status,
         location: initialData.location,
         isRental: initialData.isRental || false,
@@ -86,8 +88,11 @@ export const BedForm: React.FC<BedFormProps> = ({ onSubmit, onCancel, initialDat
     if (!formData.location.trim()) {
         newErrors.location = "Location is required.";
     }
+    if (!formData.department?.trim()) {
+      newErrors.department = "Department/Unit is required.";
+    }
     if (!formData.bedType) newErrors.bedType = "Bed Type is required.";
-    if (!formData.bedArea) newErrors.bedArea = "Bed Area is required.";
+    
     if (!formData.status) newErrors.status = "Status is required.";
 
     if (formData.isRental && !formData.hillromConfirmation?.trim()) {
@@ -149,14 +154,15 @@ export const BedForm: React.FC<BedFormProps> = ({ onSubmit, onCancel, initialDat
             error={errors.otherBedTypeName}
           />
         ) : <div />}
-         <SelectInput
-          label="Bed Area"
-          id="bedArea"
-          value={formData.bedArea}
+        
+        <TextInput
+          label="Department / Unit"
+          id="department"
+          value={formData.department || ''}
           onChange={handleChange}
-          options={BED_AREA_OPTIONS}
+          placeholder="e.g., ICU West, 8 South, Neurology"
           required
-          error={errors.bedArea}
+          error={errors.department}
         />
         <TextInput
           label="Location"
@@ -208,7 +214,7 @@ export const BedForm: React.FC<BedFormProps> = ({ onSubmit, onCancel, initialDat
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4">
             <TextInput label="Asset Number" id="assetNumber" value={formData.assetNumber || ''} onChange={handleChange} disabled={!isAdmin} error={errors.assetNumber} />
             <TextInput label="Serial Number" id="serialNumber" value={formData.serialNumber || ''} onChange={handleChange} disabled={!isAdmin} error={errors.serialNumber} />
-            <TextInput label="Purchase Order (PO)" id="purchaseOrder" value={formData.purchaseOrder || ''} onChange={handleChange} disabled={!isAdmin} error={errors.purchaseOrder} />
+            
         </div>
       </fieldset>
 

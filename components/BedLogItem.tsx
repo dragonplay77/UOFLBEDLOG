@@ -33,7 +33,8 @@ export const BedLogItem: React.FC<BedLogItemProps> = ({ bed, onEdit, currentUser
     <tr className={`hover:bg-gray-50 transition-colors odd:bg-white even:bg-gray-50`}>
       <td className="px-5 py-4 whitespace-nowrap text-sm font-medium">{bed.patientLastName || 'N/A'}</td>
       <td className="px-5 py-4 whitespace-nowrap text-sm">{displayBedType}</td>
-      <td className="px-5 py-4 whitespace-nowrap text-sm">{bed.bedArea}</td>
+      
+      <td className="px-5 py-4 whitespace-nowrap text-sm">{bed.department || 'N/A'}</td>
       <td className="px-5 py-4 whitespace-nowrap text-sm">
         <span className={`px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusPillClasses()}`}>
           {bed.status}
@@ -48,7 +49,6 @@ export const BedLogItem: React.FC<BedLogItemProps> = ({ bed, onEdit, currentUser
       <td className="px-5 py-4 whitespace-nowrap text-sm">{bed.hillromConfirmation || 'N/A'}</td>
       <td className="px-5 py-4 whitespace-nowrap text-sm">{bed.assetNumber || 'N/A'}</td>
       <td className="px-5 py-4 whitespace-nowrap text-sm">{bed.serialNumber || 'N/A'}</td>
-      <td className="px-5 py-4 whitespace-nowrap text-sm">{bed.purchaseOrder || 'N/A'}</td>
       <td className="px-5 py-4 text-sm min-w-[150px]">{bed.notes || 'N/A'}</td>
       <td className="px-5 py-4 whitespace-nowrap text-sm">
         <div className="truncate" title={bed.lastEditedBy}>{bed.lastEditedBy}</div>

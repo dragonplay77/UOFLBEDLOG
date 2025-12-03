@@ -158,4 +158,4 @@ firebase hosting:rollback
 
 ---
 
-For support: shekib.kohistani@uoflhealth.org
+For support: skbedlog@gmail.com
